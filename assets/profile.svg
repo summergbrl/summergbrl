@@ -1,0 +1,117 @@
+<svg width="876" height="674" viewBox="0 0 876 674" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .art { font-family: 'Courier New', monospace; font-size: 12.3px; fill: #c9a8ff; white-space: pre; }
+      .header { font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; fill: #b16cff; }
+      .rule { stroke: #b16cff; stroke-width: 1.4; opacity: 0.85; }
+      .fieldline { font-family: 'Courier New', monospace; font-size: 13px; }
+      .label { fill: #ffffff; font-weight: bold; }
+      .value { fill: #5dc9f2; }
+      .prompt { font-family: 'Courier New', monospace; font-size: 15px; font-weight: bold; fill: #b16cff; }
+      .titletext { font-family: 'Courier New', monospace; font-size: 13px; fill: #7f8aa6; }
+      .promptcmd { font-family: 'Courier New', monospace; font-size: 15px; fill: #5dc9f2; white-space: pre; }
+      .promptcursor { fill: #c9a8ff; }
+      @keyframes promptClip0 { 0.0% { width: 0.0px; animation-timing-function: steps(27, jump-end); } 12.0% { width: 243.0px; animation-timing-function: steps(1, jump-end); } 18.111% { width: 243.0px; animation-timing-function: steps(27, jump-end); } 24.861% { width: 0.0px; animation-timing-function: steps(1, jump-end); } 100% { width: 0.0px; animation-timing-function: steps(1, jump-end); } }
+      @keyframes promptClip1 { 0% { width: 0.0px; animation-timing-function: steps(1, jump-end); } 27.083% { width: 0.0px; animation-timing-function: steps(18, jump-end); } 35.083% { width: 162.0px; animation-timing-function: steps(1, jump-end); } 41.194% { width: 162.0px; animation-timing-function: steps(18, jump-end); } 45.694% { width: 0.0px; animation-timing-function: steps(1, jump-end); } 100% { width: 0.0px; animation-timing-function: steps(1, jump-end); } }
+      @keyframes promptClip2 { 0% { width: 0.0px; animation-timing-function: steps(1, jump-end); } 47.917% { width: 0.0px; animation-timing-function: steps(28, jump-end); } 60.361% { width: 252.0px; animation-timing-function: steps(1, jump-end); } 66.472% { width: 252.0px; animation-timing-function: steps(28, jump-end); } 73.472% { width: 0.0px; animation-timing-function: steps(1, jump-end); } 100% { width: 0.0px; animation-timing-function: steps(1, jump-end); } }
+      @keyframes promptClip3 { 0% { width: 0.0px; animation-timing-function: steps(1, jump-end); } 75.694% { width: 0.0px; animation-timing-function: steps(23, jump-end); } 85.917% { width: 207.0px; animation-timing-function: steps(1, jump-end); } 92.028% { width: 207.0px; animation-timing-function: steps(23, jump-end); } 97.778% { width: 0.0px; animation-timing-function: steps(1, jump-end); } 100% { width: 0.0px; animation-timing-function: steps(1, jump-end); } }
+      .promptClipRect0 { animation: promptClip0 18.000s infinite; }
+.promptClipRect1 { animation: promptClip1 18.000s infinite; }
+.promptClipRect2 { animation: promptClip2 18.000s infinite; }
+.promptClipRect3 { animation: promptClip3 18.000s infinite; }
+      @keyframes promptCursorMove { 0.0% { transform: translateX(0.0px); animation-timing-function: steps(27, jump-end); } 12.0% { transform: translateX(243.0px); animation-timing-function: steps(1, jump-end); } 18.111% { transform: translateX(243.0px); animation-timing-function: steps(27, jump-end); } 24.861% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } 100% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } 0% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } 27.083% { transform: translateX(0.0px); animation-timing-function: steps(18, jump-end); } 35.083% { transform: translateX(162.0px); animation-timing-function: steps(1, jump-end); } 41.194% { transform: translateX(162.0px); animation-timing-function: steps(18, jump-end); } 45.694% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } 100% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } 0% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } 47.917% { transform: translateX(0.0px); animation-timing-function: steps(28, jump-end); } 60.361% { transform: translateX(252.0px); animation-timing-function: steps(1, jump-end); } 66.472% { transform: translateX(252.0px); animation-timing-function: steps(28, jump-end); } 73.472% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } 100% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } 0% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } 75.694% { transform: translateX(0.0px); animation-timing-function: steps(23, jump-end); } 85.917% { transform: translateX(207.0px); animation-timing-function: steps(1, jump-end); } 92.028% { transform: translateX(207.0px); animation-timing-function: steps(23, jump-end); } 97.778% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } 100% { transform: translateX(0.0px); animation-timing-function: steps(1, jump-end); } }
+      .promptcursor { animation: promptCursorMove 18.000s infinite, blink 1s steps(1) infinite; }
+      .fadein { animation-name: reveal; animation-duration: 0.35s; animation-fill-mode: forwards; animation-timing-function: steps(1); }
+      .typewriter { animation-name: reveal; animation-duration: 0.4s; animation-fill-mode: forwards; animation-timing-function: steps(1); }
+      .swatch { animation-name: revealSwatch; animation-duration: 0.35s; animation-fill-mode: forwards; animation-timing-function: steps(1); }
+      @keyframes reveal { 0% { opacity: 0; } 1%, 100% { opacity: 1; } }
+      @keyframes revealSwatch { 0% { opacity: 0; } 1%, 100% { opacity: 1; } }
+      @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    </style>
+    
+      <clipPath id="promptClip0">
+        <rect x="79.0" y="602" width="243.0" height="20" class="promptClipRect0" />
+      </clipPath>
+      <clipPath id="promptClip1">
+        <rect x="79.0" y="602" width="162.0" height="20" class="promptClipRect1" />
+      </clipPath>
+      <clipPath id="promptClip2">
+        <rect x="79.0" y="602" width="252.0" height="20" class="promptClipRect2" />
+      </clipPath>
+      <clipPath id="promptClip3">
+        <rect x="79.0" y="602" width="207.0" height="20" class="promptClipRect3" />
+      </clipPath>
+  </defs>
+  
+  <rect x="0" y="0" width="876" height="674" rx="10" fill="#0b1120" />
+  <path d="M0,10 a10,10 0 0 1 10,-10 h856 a10,10 0 0 1 10,10 v24 h-876 z"
+        fill="#141c30" />
+  <circle cx="24" cy="17" r="6" fill="#ff5f57" />
+  <circle cx="46" cy="17" r="6" fill="#febc2e" />
+  <circle cx="68" cy="17" r="6" fill="#28c840" />
+  <text x="438" y="22" text-anchor="middle" class="titletext">summergbrl@github: ~</text>
+  <line x1="0" y1="34" x2="876" y2="34" stroke="#1f2740" stroke-width="1" />
+
+  
+      <text x="34" y="134.0" class="art fadein" style="animation-delay:0.0s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">                                        </text>
+      <text x="34" y="149.0" class="art fadein" style="animation-delay:0.045s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">                                        </text>
+      <text x="34" y="164.0" class="art fadein" style="animation-delay:0.09s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">           ;;           ;               </text>
+      <text x="34" y="179.0" class="art fadein" style="animation-delay:0.135s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">         :       ;..                    </text>
+      <text x="34" y="194.0" class="art fadein" style="animation-delay:0.18s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">       :      .;                        </text>
+      <text x="34" y="209.0" class="art fadein" style="animation-delay:0.225s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">     ..     ;           ;..;:;;.        </text>
+      <text x="34" y="224.0" class="art fadein" style="animation-delay:0.27s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">    ;     ;      .;::           :       </text>
+      <text x="34" y="239.0" class="art fadein" style="animation-delay:0.315s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">   .          ..                        </text>
+      <text x="34" y="254.0" class="art fadein" style="animation-delay:0.36s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">  .    :    .;                          </text>
+      <text x="34" y="269.0" class="art fadein" style="animation-delay:0.405s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">      :    ;      ;:.;.:.               </text>
+      <text x="34" y="284.0" class="art fadein" style="animation-delay:0.45s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve"> ;   ;         :.       :.::::          </text>
+      <text x="34" y="299.0" class="art fadein" style="animation-delay:0.495s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">.    ;    ;   :            ;.;.:.       </text>
+      <text x="34" y="314.0" class="art fadein" style="animation-delay:0.54s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">;   ;:   .    .               ::;:.     </text>
+      <text x="34" y="329.0" class="art fadein" style="animation-delay:0.585s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">    .    .     :               . .;     </text>
+      <text x="34" y="344.0" class="art fadein" style="animation-delay:0.63s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">    .    .     .:              ::       </text>
+      <text x="34" y="359.0" class="art fadein" style="animation-delay:0.675s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">    :     ;     ;..            ..;      </text>
+      <text x="34" y="374.0" class="art fadein" style="animation-delay:0.72s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">    ;     .       .::;        :;;       </text>
+      <text x="34" y="389.0" class="art fadein" style="animation-delay:0.765s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">     ;              .  :..;.:;;.        </text>
+      <text x="34" y="404.0" class="art fadein" style="animation-delay:0.81s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">     ;     ..         ;: :.:;:          </text>
+      <text x="34" y="419.0" class="art fadein" style="animation-delay:0.855s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">                           :            </text>
+      <text x="34" y="434.0" class="art fadein" style="animation-delay:0.9s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">             .;                         </text>
+      <text x="34" y="449.0" class="art fadein" style="animation-delay:0.945s" textLength="336.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">                                        </text>
+
+  <text x="416.0" y="94" class="header">summergbrl@github</text>
+  <line x1="416.0" y1="104" x2="594.6" y2="104" class="rule" />
+  
+      <text x="416.0" y="134" class="fieldline typewriter" style="animation-delay:0.50s"><tspan class="label">Role:</tspan> <tspan class="value">IT systems &amp; infrastructure manager</tspan></text>
+      <text x="416.0" y="156" class="fieldline typewriter" style="animation-delay:0.56s"><tspan class="label">Company:</tspan> <tspan class="value">Neuron Health Systems</tspan></text>
+      <text x="416.0" y="178" class="fieldline typewriter" style="animation-delay:0.62s"><tspan class="label">Location:</tspan> <tspan class="value">New Jersey, USA</tspan></text>
+      <text x="416.0" y="200" class="fieldline typewriter" style="animation-delay:0.68s"><tspan class="label">Focus:</tspan> <tspan class="value">healthcare platforms, automation, SEO</tspan></text>
+      <text x="416.0" y="222" class="fieldline typewriter" style="animation-delay:0.74s"><tspan class="label">Stack.Frontend:</tspan> <tspan class="value">next.js, react, typescript, tailwind</tspan></text>
+      <text x="416.0" y="244" class="fieldline typewriter" style="animation-delay:0.80s"><tspan class="label">Stack.Backend:</tspan> <tspan class="value">node, prisma, postgres, php</tspan></text>
+      <text x="416.0" y="266" class="fieldline typewriter" style="animation-delay:0.86s"><tspan class="label">Stack.Cloud:</tspan> <tspan class="value">aws, vercel, supabase, fly.io</tspan></text>
+      <text x="416.0" y="288" class="fieldline typewriter" style="animation-delay:0.92s"><tspan class="label">Stack.Scripting:</tspan> <tspan class="value">python, powershell</tspan></text>
+      <text x="416.0" y="310" class="fieldline typewriter" style="animation-delay:0.98s"><tspan class="label">Stack.AI:</tspan> <tspan class="value">claude, bedrock, groq, agents</tspan></text>
+      <text x="416.0" y="332" class="fieldline typewriter" style="animation-delay:1.04s"><tspan class="label">Environment:</tspan> <tspan class="value">windows, git, vscode, claude code</tspan></text>
+      <text x="416.0" y="354" class="fieldline typewriter" style="animation-delay:1.10s"><tspan class="label">Contact.GitHub:</tspan> <tspan class="value">github.com/summergbrl</tspan></text>
+      <text x="416.0" y="376" class="fieldline typewriter" style="animation-delay:1.16s"><tspan class="label">Contact.LinkedIn:</tspan> <tspan class="value">linkedin.com/in/summergabo</tspan></text>
+      <text x="416.0" y="398" class="fieldline typewriter" style="animation-delay:1.22s"><tspan class="label">GitHub.Repos:</tspan> <tspan class="value">N/A</tspan></text>
+      <text x="416.0" y="420" class="fieldline typewriter" style="animation-delay:1.28s"><tspan class="label">GitHub.Stars:</tspan> <tspan class="value">N/A</tspan></text>
+      <text x="416.0" y="442" class="fieldline typewriter" style="animation-delay:1.34s"><tspan class="label">GitHub.Followers:</tspan> <tspan class="value">N/A</tspan></text>
+      <text x="416.0" y="464" class="fieldline typewriter" style="animation-delay:1.40s"><tspan class="label">GitHub.Languages:</tspan> <tspan class="value">N/A</tspan></text>
+      <text x="416.0" y="486" class="fieldline typewriter" style="animation-delay:1.46s"><tspan class="label">GitHub.Contributions:</tspan> <tspan class="value">N/A</tspan></text>
+  
+      <rect x="416.0" y="522.0" width="20" height="20" rx="3" fill="#0b1120" stroke="#2a3350" stroke-width="1" class="swatch" style="animation-delay:1.52s" />
+      <rect x="444.0" y="522.0" width="20" height="20" rx="3" fill="#e8384f" stroke="#2a3350" stroke-width="1" class="swatch" style="animation-delay:1.57s" />
+      <rect x="472.0" y="522.0" width="20" height="20" rx="3" fill="#3ddc84" stroke="#2a3350" stroke-width="1" class="swatch" style="animation-delay:1.62s" />
+      <rect x="500.0" y="522.0" width="20" height="20" rx="3" fill="#ffd166" stroke="#2a3350" stroke-width="1" class="swatch" style="animation-delay:1.67s" />
+      <rect x="528.0" y="522.0" width="20" height="20" rx="3" fill="#4d8cff" stroke="#2a3350" stroke-width="1" class="swatch" style="animation-delay:1.72s" />
+      <rect x="556.0" y="522.0" width="20" height="20" rx="3" fill="#b16cff" stroke="#2a3350" stroke-width="1" class="swatch" style="animation-delay:1.77s" />
+      <rect x="584.0" y="522.0" width="20" height="20" rx="3" fill="#39e0d0" stroke="#2a3350" stroke-width="1" class="swatch" style="animation-delay:1.82s" />
+      <rect x="612.0" y="522.0" width="20" height="20" rx="3" fill="#e8e8e8" stroke="#2a3350" stroke-width="1" class="swatch" style="animation-delay:1.87s" />
+
+  <text x="34" y="592" class="prompt">┌──(summergbrl@github-[~]</text>
+  <text x="34" y="616" class="prompt">└─$ </text>
+  
+      <text x="79.0" y="616" class="promptcmd" clip-path="url(#promptClip0)" textLength="243.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">it systems &amp; infrastructure</text>
+      <text x="79.0" y="616" class="promptcmd" clip-path="url(#promptClip1)" textLength="162.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">full-stack builder</text>
+      <text x="79.0" y="616" class="promptcmd" clip-path="url(#promptClip2)" textLength="252.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">healthcare platform engineer</text>
+      <text x="79.0" y="616" class="promptcmd" clip-path="url(#promptClip3)" textLength="207.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">automation &amp; ai tooling</text>
+  <rect x="79.0" y="602.0" width="8" height="16" class="promptcursor" />
+</svg>
