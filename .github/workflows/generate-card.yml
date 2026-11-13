@@ -15,6 +15,7 @@ on:
 
     paths-ignore:
       - 'assets/profile.svg'
+      - 'assets/contributions.svg'
 
 permissions:
   contents: write
@@ -42,6 +43,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/profile.svg
+          git add assets/profile.svg assets/contributions.svg
           git diff --staged --quiet || git commit -m "chore: refresh ascii profile card"
           git push

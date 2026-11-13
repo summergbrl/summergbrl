@@ -34,26 +34,26 @@ PROFILE_FIELDS = [
     ("Company", "Neuron Health Systems"),
     ("Location", "New Jersey, USA"),
     ("Focus", "healthcare platforms, automation, SEO"),
-    ("Stack.Frontend", "next.js, react, typescript, tailwind"),
-    ("Stack.Backend", "node, prisma, postgres, php"),
-    ("Stack.Cloud", "aws, vercel, supabase, fly.io"),
-    ("Stack.Scripting", "python, powershell"),
-    ("Stack.AI", "claude, bedrock, groq, agents"),
-    ("Environment", "windows, git, vscode, claude code"),
-    ("Contact.GitHub", f"github.com/{LOGIN}"),
-    ("Contact.LinkedIn", "linkedin.com/in/summergabo"),
+    ("Frontend", "next.js, react, typescript, tailwind"),
+    ("Backend", "node, prisma, postgres, php"),
+    ("Cloud", "aws, vercel, supabase, fly.io"),
+    ("Scripting", "python, powershell"),
+    ("AI", "claude, bedrock, groq, agents"),
+    ("Tools", "git, vscode, claude code"),
+    ("GitHub", f"github.com/{LOGIN}"),
+    ("LinkedIn", "linkedin.com/in/summergabo"),
 ]
 
 # ---- Kali color scheme -----------------------------------------------------
-BG_COLOR = "#0b1120"          # terminal window background (deep navy)
-TITLEBAR_COLOR = "#141c30"    # title bar strip
-TITLE_TEXT_COLOR = "#7f8aa6"
-ACCENT = "#c9a8ff"             # ASCII art color (light blue dots)
-HEADER_COLOR = "#b16cff"       # bold red "login@login" header + prompt user/path
-LABEL_COLOR = "#ffffff"        # bold field labels
-VALUE_COLOR = "#5dc9f2"        # field values (cyan/blue)
-PALETTE = ["#0b1120", "#e8384f", "#3ddc84", "#ffd166", "#4d8cff",
-           "#b16cff", "#39e0d0", "#e8e8e8"]
+BG_COLOR = "#0d211b"          # deep forest (Neuron brand-deep, darkened)
+TITLEBAR_COLOR = "#14342b"    # Neuron forest
+TITLE_TEXT_COLOR = "#8fb3a3"
+ACCENT = "#a3d856"             # Neuron logo lime
+HEADER_COLOR = "#a3d856"       # lime header + prompt
+LABEL_COLOR = "#f4f9ec"        # Neuron mist
+VALUE_COLOR = "#7dc4a3"        # Neuron mint
+PALETTE = ["#14342b", "#1f4a3e", "#1f5a27", "#4cae4f", "#7dc4a3",
+           "#a3d856", "#2e9bef", "#f4f9ec"]
 
 PROMPT_COMMANDS = [
     "it systems & infrastructure",
@@ -61,6 +61,7 @@ PROMPT_COMMANDS = [
     "healthcare platform engineer",
     "automation & ai tooling",
 ]
+MONO_STACK = "'SF Mono', 'JetBrains Mono', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace"
 PROMPT_TYPE_SPEED = 0.08
 PROMPT_DELETE_SPEED = 0.045
 PROMPT_HOLD_TIME = 1.1
@@ -231,7 +232,7 @@ def build_prompt_typing_svg(commands, x, y):
     for i, cmd in enumerate(commands):
         full_w = max(1, len(cmd)) * PROMPT_CHAR_W
         text_svg.append(
-            f'\n      <text x="{x}" y="{y}" class="promptcmd" clip-path="url(#promptClip{i})" '
+            f'\n      <text x="{x}" y="{y}" class="promptcmd pc{i}" clip-path="url(#promptClip{i})" '
             f'textLength="{full_w:.1f}" lengthAdjust="spacingAndGlyphs" xml:space="preserve">{xml_escape(cmd)}</text>'
         )
 
@@ -387,8 +388,9 @@ def build_svg(art_rows, fields):
     H = prompt_y + PROMPT_H + 20
     header_text = f"{LOGIN}@github"
     rule_len = len(header_text) + 2
-    longest_field = max((len(f"{k}: {v}") for k, v in fields), default=0)
-    W = info_x + max(360, longest_field * 8.2) + PAD
+    label_cols = max((len(k) for k, _ in fields), default=0) + 2
+    longest_field = max((label_cols + len(v) for _, v in fields), default=0)
+    W = info_x + max(360, longest_field * 8.6) + PAD
 
     art_lines = []
     for i, row in enumerate(art_rows):
@@ -402,17 +404,18 @@ def build_svg(art_rows, fields):
     art_svg = "".join(art_lines)
 
     header_svg = (
-        f'<text x="{info_x}" y="{header_y}" class="header">{xml_escape(header_text)}</text>'
-        f'\n  <line x1="{info_x}" y1="{rule_y}" x2="{info_x + rule_len * 9.4}" y2="{rule_y}" class="rule" />'
+        f'<text x="{info_x}" y="{header_y}" class="header" textLength="{len(header_text) * 12:.1f}" lengthAdjust="spacing">{xml_escape(header_text)}</text>'
+        f'\n  <line x1="{info_x}" y1="{rule_y}" x2="{info_x + len(header_text) * 12:.1f}" y2="{rule_y}" class="rule" />'
     )
 
     field_lines = []
+    label_w = max((len(k) for k, _ in fields), default=0) + 2
     for i, (label, value) in enumerate(fields):
         y = fields_start_y + i * FIELD_LINE_H
         delay = 0.5 + i * 0.06
         field_lines.append(
-            f'\n      <text x="{info_x}" y="{y}" class="fieldline typewriter" style="animation-delay:{delay:.2f}s">'
-            f'<tspan class="label">{xml_escape(label)}:</tspan> '
+            f'\n      <text x="{info_x}" y="{y}" class="fieldline typewriter" style="animation-delay:{delay:.2f}s" xml:space="preserve">'
+            f'<tspan class="label">{xml_escape((label + ":").ljust(label_w))}</tspan>'
             f'<tspan class="value">{xml_escape(value)}</tspan></text>'
         )
     fields_svg = "".join(field_lines)
@@ -437,8 +440,8 @@ def build_svg(art_rows, fields):
     )
 
     prompt_svg = (
-        f'<text x="{PAD}" y="{prompt_y}" class="prompt">{xml_escape(prompt_line1)}</text>'
-        f'\n  <text x="{PAD}" y="{typed_y}" class="prompt">{xml_escape(prompt_line2)}</text>'
+        f'<text x="{PAD}" y="{prompt_y}" class="prompt" textLength="{len(prompt_line1) * 9.0:.1f}" lengthAdjust="spacing">{xml_escape(prompt_line1)}</text>'
+        f'\n  <text x="{PAD}" y="{typed_y}" class="prompt" textLength="{len(prompt_line2.rstrip()) * 9.0:.1f}" lengthAdjust="spacing">{xml_escape(prompt_line2.rstrip())}</text>'
         f'\n  {prompt_cmd_svg}'
         f'\n  {prompt_cursor_svg}'
     )
@@ -460,15 +463,15 @@ def build_svg(art_rows, fields):
     return f'''<svg width="{W:.0f}" height="{H:.0f}" viewBox="0 0 {W:.0f} {H:.0f}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      .art {{ font-family: 'Courier New', monospace; font-size: {CELL_H*0.82:.1f}px; fill: {ACCENT}; white-space: pre; }}
-      .header {{ font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; fill: {HEADER_COLOR}; }}
-      .rule {{ stroke: {HEADER_COLOR}; stroke-width: 1.4; opacity: 0.85; }}
-      .fieldline {{ font-family: 'Courier New', monospace; font-size: 13px; }}
-      .label {{ fill: {LABEL_COLOR}; font-weight: bold; }}
-      .value {{ fill: {VALUE_COLOR}; }}
-      .prompt {{ font-family: 'Courier New', monospace; font-size: 15px; font-weight: bold; fill: {HEADER_COLOR}; }}
-      .titletext {{ font-family: 'Courier New', monospace; font-size: 13px; fill: {TITLE_TEXT_COLOR}; }}
-      .promptcmd {{ font-family: 'Courier New', monospace; font-size: 15px; fill: {VALUE_COLOR}; white-space: pre; }}
+      .art {{ font-family: 'SF Mono', 'JetBrains Mono', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace; font-size: {CELL_H*0.82:.1f}px; fill: {ACCENT}; white-space: pre; }}
+      .header {{ font-family: 'SF Mono', 'JetBrains Mono', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; fill: {HEADER_COLOR}; }}
+      .rule {{ stroke: {HEADER_COLOR}; stroke-width: 1.2; opacity: 0.5; }}
+      .fieldline {{ font-family: 'SF Mono', 'JetBrains Mono', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 13.5px; }}
+      .label {{ fill: {LABEL_COLOR}; font-weight: 600; }}
+      .value {{ fill: {VALUE_COLOR}; font-weight: 400; }}
+      .prompt {{ font-family: 'SF Mono', 'JetBrains Mono', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 15px; font-weight: 600; fill: {HEADER_COLOR}; }}
+      .titletext {{ font-family: 'SF Mono', 'JetBrains Mono', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 12px; letter-spacing: 0.04em; fill: {TITLE_TEXT_COLOR}; }}
+      .promptcmd {{ font-family: 'SF Mono', 'JetBrains Mono', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 15px; fill: {VALUE_COLOR}; white-space: pre; }}
       .promptcursor {{ fill: {ACCENT}; }}
       {prompt_style}
       .fadein {{ animation-name: reveal; animation-duration: 0.35s; animation-fill-mode: forwards; animation-timing-function: steps(1); }}
@@ -476,6 +479,10 @@ def build_svg(art_rows, fields):
       .swatch {{ animation-name: revealSwatch; animation-duration: 0.35s; animation-fill-mode: forwards; animation-timing-function: steps(1); }}
       @keyframes reveal {{ 0% {{ opacity: 0; }} 1%, 100% {{ opacity: 1; }} }}
       @keyframes revealSwatch {{ 0% {{ opacity: 0; }} 1%, 100% {{ opacity: 1; }} }}
+      @media (prefers-reduced-motion: reduce) {{
+        * {{ animation: none !important; }}
+        .promptcmd:not(.pc0), .promptcursor {{ display: none; }}
+      }}
       @keyframes blink {{ 0%, 49% {{ opacity: 1; }} 50%, 100% {{ opacity: 0; }} }}
     </style>
     {prompt_defs}
@@ -493,6 +500,47 @@ def build_svg(art_rows, fields):
 '''
 
 
+CAL_PATH = os.environ.get("CAL_PATH", "assets/contributions.svg")
+CAL_LEVELS = ["#16302a", "#1f5a27", "#3d8f45", "#7cc45a", "#a3d856"]  # Neuron forest to lime
+
+
+def build_calendar_svg(login, token):
+    """Contribution calendar for the last year, drawn in Neuron colors. None without a token."""
+    if not token:
+        return None
+    import requests
+    q = """query($login: String!) { user(login: $login) { contributionsCollection {
+      contributionCalendar { totalContributions weeks { contributionDays { contributionLevel date } } } } } }"""
+    r = requests.post("https://api.github.com/graphql", headers={"Authorization": f"Bearer {token}"},
+                      json={"query": q, "variables": {"login": login}}, timeout=15)
+    r.raise_for_status()
+    cal = r.json()["data"]["user"]["contributionsCollection"]["contributionCalendar"]
+    lvl = {"NONE": 0, "FIRST_QUARTILE": 1, "SECOND_QUARTILE": 2, "THIRD_QUARTILE": 3, "FOURTH_QUARTILE": 4}
+    cell, gap, left, top = 11, 3, 8, 30
+    weeks = cal["weeks"]
+    W = left * 2 + len(weeks) * (cell + gap) - gap
+    H = top + 7 * (cell + gap) + 6
+    rects, months, last_month = [], [], None
+    for wi, week in enumerate(weeks):
+        x = left + wi * (cell + gap)
+        first = week["contributionDays"][0]["date"]
+        if first[5:7] != last_month and first[8:10] <= "07":
+            last_month = first[5:7]
+            name = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][int(last_month) - 1]
+            months.append(f'<text x="{x}" y="{top - 9}" class="m">{name}</text>')
+        for day in week["contributionDays"]:
+            from datetime import date
+            y = top + date.fromisoformat(day["date"]).isoweekday() % 7 * (cell + gap)
+            rects.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2.5" fill="{CAL_LEVELS[lvl[day["contributionLevel"]]]}"/>')
+    total = cal["totalContributions"]
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H + 22}" viewBox="0 0 {W} {H + 22}">'
+            f"<style>text{{font-family:{MONO_STACK};fill:#8fb3a3}} .m{{font-size:10px;letter-spacing:.02em}} "
+            f".t{{font-size:11px;fill:#a3d856;font-weight:600}}</style>"
+            f'<rect width="100%" height="100%" rx="10" fill="#0d211b"/>'
+            + "".join(months) + "".join(rects)
+            + f'<text x="{left}" y="{H + 12}" class="t">{total:,} contributions in the last year</text></svg>')
+
+
 def main():
     avatar_path = find_avatar()
     if avatar_path:
@@ -506,11 +554,11 @@ def main():
 
     fields = list(PROFILE_FIELDS)
     fields.extend([
-        ("GitHub.Repos", stats["repos"]),
-        ("GitHub.Stars", stats["stars"]),
-        ("GitHub.Followers", stats["followers"]),
-        ("GitHub.Languages", stats["top_languages"]),
-        ('GitHub.Contributions', stats["contributions"])
+        ("Repos", stats["repos"]),
+        ("Stars", stats["stars"]),
+        ("Followers", stats["followers"]),
+        ("Languages", stats["top_languages"]),
+        ("Contributions", stats["contributions"])
     ])
 
     svg = build_svg(art_rows, fields)
@@ -518,6 +566,12 @@ def main():
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         f.write(svg)
     print(f"wrote {OUT_PATH}")
+
+    cal = build_calendar_svg(LOGIN, TOKEN)
+    if cal:
+        with open(CAL_PATH, "w", encoding="utf-8") as f:
+            f.write(cal)
+        print(f"wrote {CAL_PATH}")
 
 
 if __name__ == "__main__":
